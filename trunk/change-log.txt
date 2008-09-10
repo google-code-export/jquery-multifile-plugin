@@ -64,14 +64,14 @@ Added namePattern options - allows user to configure name of slave elements
 	- $name = master name, $id = master id, $g = group count, $i = slave count
 	- eg.: $name$i will result in file1, file2, file3 and so on...
 
-20-May-2008: v 1.29
+20-May-2008: v1.29
 Fixed IE7 bug - onchange event being fired twice on the first element
 
-26-Jun-2008: v 1.29
+26-Jun-2008: v1.29
 Replaced variables named 'class' with 'klass' to avoid conflict with reserved keyword
 Thanks to Julien Phalip <jphalip@yahoo.fr>
 
-30-Jun-2008: v 1.29
+30-Jun-2008: v1.29
 Fixed a bug that cause the options variable to be re-used in separate calls.
 There are now 2 separate variables to maintain options within the correct scope of each call.
 'o' is now declared privately inside the $.fn.MultiFile method.

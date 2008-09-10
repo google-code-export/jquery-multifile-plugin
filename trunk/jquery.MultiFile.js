@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v 1.29 - 2008-06-26 ###
+ ### jQuery Multiple File Upload Plugin v1.29 - 2008-09-10 ###
  * http://www.fyneworks.com/ - diego@fyneworks.com
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -100,6 +100,18 @@
    klass = klass || 'mfD';
    return $('input:file.'+klass).removeClass(klass).each(function(){ this.disabled = false });
   },
+  
+  
+ /**
+  * This method will intercept other jQuery plugins and disable empty file input elements prior to form submission
+  *
+  * @name intercept
+  * @cat Plugins/Multifile
+  * @author Diego A. (http://www.fyneworks.com/)
+  *
+  * @example $.MultiFile.intercept();
+  * @param Array methods (optional) Array of method names to be intercepted
+  */
   autoIntercept: [ 'submit', 'ajaxSubmit', 'validate' /* array of methods to intercept */ ],
   intercepted: {},
   intercept: function(methods, context, args){
