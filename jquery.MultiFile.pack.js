@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v 1.29 - 2008-06-26 ###
+ ### jQuery Multiple File Upload Plugin v1.29 - 2008-09-10 ###
  * http://www.fyneworks.com/ - diego@fyneworks.com
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
