@@ -76,3 +76,7 @@ Fixed a bug that cause the options variable to be re-used in separate calls.
 There are now 2 separate variables to maintain options within the correct scope of each call.
 'o' is now declared privately inside the $.fn.MultiFile method.
 'options' is a new variable for the argument passed into the $.fn.MultiFile method.
+
+30-Sep-2008: v1.3
+FINALLY managed to work around the IE security issue which disallowed
+the script from clearing the value of a <input type="file" element
