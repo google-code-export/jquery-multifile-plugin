@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.29 - 2008-09-10 ###
+ ### jQuery Multiple File Upload Plugin v1.3 - 2008-09-30 ###
  * http://www.fyneworks.com/ - diego@fyneworks.com
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -313,22 +313,20 @@
           var ERROR = '', v = String(this.value || ''/*.attr('value)*/);
           
           // check extension
-          if(MF.accept){
-           if(v!=''){
-            if(!v.match(MF.rxAccept)){
-             ERROR = MF.STRING.denied.replace('$ext', String(v.match(/\.\w{1,4}$/gi)));
-            }
-           }
-          };
+          if(MF.accept && v && !v.match(MF.rxAccept))//{
+            ERROR = MF.STRING.denied.replace('$ext', String(v.match(/\.\w{1,4}$/gi)));
+           //}
+          //};
           
           // Disallow duplicates
-          for(var f=0;f<MF.slaves.length;f++){
-           if(MF.slaves[f]!=this){
-            if(MF.slaves[f].value==v){
+										for(var f in MF.slaves)//{
+           if(MF.slaves[f] && MF.slaves[f]!=this)//{
+  										//console.log(MF.slaves[f],MF.slaves[f].value);
+            if(MF.slaves[f].value==v)//{
              ERROR = MF.STRING.duplicate.replace('$file', v.match(/[^\/\\]+$/gi));
-            }
-           }
-          };
+            //};
+           //};
+          //};
           
           // Create a new file input element
           //var newEle = $('<input name="'+(MF.E.attr('name') || '')+'" type="file"/>');
@@ -407,23 +405,29 @@
           MF.current.disabled = false;
           
           // Remove element, remove label, point to current
+										/*
+										console.log([MF,MF.current,slave]); return;
           if(slave.i==0){
            $(MF.current).remove();
            MF.current = slave;
           }
           else{
-           $(slave).remove();
-          };
-          $(this).parent().remove();
+          */
+										 MF.slaves[slave.i] = null;
+										 $(slave).remove();
+          /*
+										};
+          */
+										$(this).parent().remove();
           
           // Show most current element again (move into view) and clear selection
-          $(MF.current).css({ position:'', top: '' }).reset().val('').attr('value', '')[0].value = '';
+          $(MF.current).css({ position:'', top: '' });
+										$(MF.current).reset().val('').attr('value', '')[0].value = '';
           
           //# Trigger Event! afterFileRemove
           if(!MF.trigger('afterFileRemove', slave, MF)) return false;
           //# End Event!
-
-          
+										
           return false;
         });
         
