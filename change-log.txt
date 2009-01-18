@@ -80,3 +80,9 @@ There are now 2 separate variables to maintain options within the correct scope 
 30-Sep-2008: v1.30
 FINALLY managed to work around the IE security issue which disallowed
 the script from clearing the value of a <input type="file" element
+
+17-Jan-2009: v1.31
+- jQuery 1.3 support
+- Added new string 'file' to control file label in selected file list
+- Addded more examples demonstrating new features
+- Added example t demonstrate all available events
