@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.3 - 2008-09-30 ###
+ ### jQuery Multiple File Upload Plugin v1.31 - 2008-09-30 ###
  * http://www.fyneworks.com/ - diego@fyneworks.com
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -16,7 +16,7 @@
  // extend jQuery - $.MultiFile hook
  $.extend($, {
   MultiFile: function( o /* Object */ ){
-   //return $("INPUT[@type='file'].multi").MultiFile(o);
+   //return $("INPUT[type='file'].multi").MultiFile(o);
    return $("input:file.multi").MultiFile(o);
   }
  });
@@ -48,8 +48,9 @@
    namePattern: '$name',
    // STRING: collection lets you show messages in different languages
    STRING: {
-    remove:'remove',
+    remove:'x',
     denied:'You cannot select a $ext file.\nTry again...',
+    file:'$file',
     selected:'File selected: $file',
     duplicate:'This file has already been selected:\n$file'
    }
@@ -251,12 +252,15 @@
        
        //===
        
-       // Create a wrapper for the labels
-       // * OPERA BUG: NO_MODIFICATION_ALLOWED_ERR ('labels' is a read-only property)
-       // this changes allows us to keep the files in the order they were selected
-       MF.wrapper.append( '<span id="'+MF.wrapID+'_labels"></span>' );
-       MF.labels = $('#'+MF.wrapID+'_labels');
-       
+							if(!MF.list){
+								// Create a wrapper for the list
+								// * OPERA BUG: NO_MODIFICATION_ALLOWED_ERR ('list' is a read-only property)
+								// this change allows us to keep the files in the order they were selected
+								MF.wrapper.append( '<span id="'+MF.wrapID+'_list"></span>' );
+								MF.list = $('#'+MF.wrapID+'_list');
+							};
+       MF.list = $(MF.list);
+							
        //===
        
        // Bind a new element
@@ -357,7 +361,8 @@
           $(this).css({ position:'absolute', top: '-3000px' });
           
           // Add new element to the form
-          MF.labels.before(newEle);//.append(newEle);
+          //MF.list.before(newEle);//.append(newEle);
+          MF.wrapper.prepend(newEle);//.append(newEle);
           
           // Update list
           MF.addToList( this );
@@ -387,12 +392,12 @@
         var
          r = $('<div></div>'),
          v = String(slave.value || ''/*.attr('value)*/),
-         a = $('<span class="file" title="'+MF.STRING.selected.replace('$file', v)+'">'+v.match(/[^\/\\]+$/gi)[0]+'</span>'),
+         a = $('<span class="file" title="'+MF.STRING.selected.replace('$file', v)+'">'+MF.STRING.file.replace('$file', v.match(/[^\/\\]+$/gi)[0])+'</span>'),
          b = $('<a href="#'+MF.wrapID+'">'+MF.STRING.remove+'</a>');
         
         // Insert label
-        MF.labels.append(
-         r.append('[', b, ']&nbsp;', a)//.prepend(slave.i+': ')
+        MF.list.append(
+         r.append(b, ' ', a)//.prepend(slave.i+': ')
         );
         
         b.click(function(){
@@ -405,19 +410,8 @@
           MF.current.disabled = false;
           
           // Remove element, remove label, point to current
-										/*
-										console.log([MF,MF.current,slave]); return;
-          if(slave.i==0){
-           $(MF.current).remove();
-           MF.current = slave;
-          }
-          else{
-          */
-										 MF.slaves[slave.i] = null;
-										 $(slave).remove();
-          /*
-										};
-          */
+										MF.slaves[slave.i] = null;
+										$(slave).remove();
 										$(this).parent().remove();
           
           // Show most current element again (move into view) and clear selection
