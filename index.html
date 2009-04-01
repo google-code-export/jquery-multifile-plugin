@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head> 
- <title>jQuery Multiple File Upload Plugin v1.31 (2009-01-17)</title>
+ <title>jQuery Multiple File Upload Plugin v1.32 (2009-04-01)</title>
  <!--// documentation resources //-->
 	<script src="jquery.js" type="text/javascript"></script>
 	<script src="documentation.js" type="text/javascript"></script>
@@ -38,7 +38,7 @@
     <td valign="middle">
      <h1>jQuery Multiple File Upload Plugin</h1>
      <span style="cursor:help; background:#C00; padding:2px; color:#FFF;" title="Current Version">
-      v<strong>1.31</strong>
+      v<strong>1.32</strong>
      </span>
     </td>
     <td valign="middle" width="450" align="right">
@@ -592,7 +592,28 @@ $(function(){ // wait for document to load
      The plugin's default behaviour generates an array of elements (sharing the same name).
      In order for this array to be properly identified and handled in PHP, you have add "[]" to name of your element.<br/>
      eg.:
-     <code>&lt;input type="file" name="MyStuff[]"...</code>
+     <pre class="code"><code class="html">&lt;input type="file" name="MyStuff[]"...</code></pre>
+    </p>
+    
+    <br/><br/><br/>
+    
+    <h2>I promise I can upload my own files. What do I need to know?</h2>
+    <p>
+     You should know that the plugin works by hiding elements with a selected file
+     and creating new empty elements. This means when submitting the form, there
+     will always be an empty item at the end of the list of files.
+     Actually, that would have been a problem but this plugin takes care of disabling
+     all dummy empty file inputs for you before the form gets submitted -
+     be it via ajax or natively. So this is good to know, but it's not something
+     you need to worry about.
+    </p>
+    <p>
+     But, just in case you need to do this yourself, there is a ready-made method you can call:
+     <pre class="code"><code class="js">$.MultiFile.disableEmpty(); // before submiting the form</code></pre>
+    </p>
+    <p>
+     And if you're doing things the ajax way, you can call this when you're done:
+     <pre class="code"><code class="js">$.MultiFile.reEnableEmpty(); // after submiting the form</code></pre>
     </p>
    </div><!--// tab-Uploading //-->
    
@@ -608,7 +629,7 @@ $(function(){ // wait for document to load
       <td valign="top">
        <big>
         <img src="/@/download.gif" style="margin:0 5px 5px 0; float:left;">
-        v<strong>1.31</strong>
+        v<strong>1.32</strong>
         <a href="http://jquery-multifile-plugin.googlecode.com/svn/trunk/multiple-file-upload.zip"><strong>multiple-file-upload.zip</strong></a>
        </big>
       </td>
@@ -723,7 +744,7 @@ $(function(){ // wait for document to load
       <td valign="top" align="right">Full Package:</td>
       <td valign="top">
        <img src="/@/download.gif" style="margin:0 5px 5px 0; float:left;">
-       v<strong>1.31</strong>
+       v<strong>1.32</strong>
        <a href="multiple-file-upload.zip"><strong>multiple-file-upload.zip</strong></a>
       </td>
      </tr>

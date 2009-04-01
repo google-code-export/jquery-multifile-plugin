@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.31 - 2009-01-17 ###
+ ### jQuery Multiple File Upload Plugin v1.32 - 2009-04-01 ###
  * Home: http://www.fyneworks.com/jquery/multiple-file-upload/
  * Code: http://code.google.com/p/jquery-multifile-plugin/
  *
@@ -152,6 +152,14 @@
    // MultiFile function
    MultiFile: function( options /* Object */ ){
     
+				// Empty Element Fix!!!
+				// this code will automatically intercept native form submissions
+				// and disable empty file elements
+				$('form')
+				.not('MultiFile-intercepted')
+				.addClass('MultiFile-intercepted')
+				.submit($.MultiFile.disableEmpty);
+				
     //### http://plugins.jquery.com/node/1363
     // utility method to integrate this plugin with others...
     if($.MultiFile.autoIntercept){
@@ -164,7 +172,7 @@
     // Bind to each element in current jQuery object
     return $(this).each(function(group_count){
      if(this._MultiFile) return; this._MultiFile = true;
-     
+       
        // BUG 1251 FIX: http://plugins.jquery.com/project/comments/add/1251
        // variable group_count would repeat itself on multiple calls to the plugin.
        // this would cause a conflict with multiple elements
