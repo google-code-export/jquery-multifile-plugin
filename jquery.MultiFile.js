@@ -138,7 +138,7 @@
        
        // Create wrapper to hold our file list
        MultiFile.wrapID = MultiFile.instanceKey+'_wrap'; // Wrapper ID?
-       MultiFile.E.wrap('<div id="'+MultiFile.wrapID+'"></div>');
+       MultiFile.E.wrap('<div class="MultiFile-wrap" id="'+MultiFile.wrapID+'"></div>');
        MultiFile.wrapper = $('#'+MultiFile.wrapID+'');
        
        //===
@@ -152,7 +152,7 @@
 								// Create a wrapper for the list
 								// * OPERA BUG: NO_MODIFICATION_ALLOWED_ERR ('list' is a read-only property)
 								// this change allows us to keep the files in the order they were selected
-								MultiFile.wrapper.append( '<span id="'+MultiFile.wrapID+'_list"></span>' );
+								MultiFile.wrapper.append( '<div class="MultiFile-list" id="'+MultiFile.wrapID+'_list"></div>' );
 								MultiFile.list = $('#'+MultiFile.wrapID+'_list');
 							};
        MultiFile.list = $(MultiFile.list);
@@ -291,10 +291,10 @@
         
         // Create label elements
         var
-         r = $('<div class="label"></div>'),
+         r = $('<div class="MultiFile-label"></div>'),
          v = String(slave.value || ''/*.attr('value)*/),
-         a = $('<span class="file" title="'+MultiFile.STRING.selected.replace('$file', v)+'">'+MultiFile.STRING.file.replace('$file', v.match(/[^\/\\]+$/gi)[0])+'</span>'),
-         b = $('<a class="remove" href="#'+MultiFile.wrapID+'">'+MultiFile.STRING.remove+'</a>');
+         a = $('<span class="MultiFile-title" title="'+MultiFile.STRING.selected.replace('$file', v)+'">'+MultiFile.STRING.file.replace('$file', v.match(/[^\/\\]+$/gi)[0])+'</span>'),
+         b = $('<a class="MultiFile-remove" href="#'+MultiFile.wrapID+'">'+MultiFile.STRING.remove+'</a>');
         
         // Insert label
         MultiFile.list.append(
@@ -373,7 +373,7 @@
    */
   reset: function(){
 			var MultiFile = $(this).data('MultiFile');
-			if(MultiFile) MultiFile.wrapper.find('a.remove').click()
+			if(MultiFile) MultiFile.wrapper.find('a.MultiFile-remove').click()
    return $(this);
   },
   
