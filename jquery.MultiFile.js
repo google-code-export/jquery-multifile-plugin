@@ -318,7 +318,7 @@
 										
           // Show most current element again (move into view) and clear selection
           $(MultiFile.current).css({ position:'', top: '' });
-										//$(MultiFile.current).reset().val('').attr('value', '')[0].value = '';
+										$(MultiFile.current).reset().val('').attr('value', '')[0].value = '';
           
           //# Trigger Event! afterFileRemove
           if(!MultiFile.trigger('afterFileRemove', slave, MultiFile)) return false;
