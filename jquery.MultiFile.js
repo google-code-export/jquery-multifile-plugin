@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.42 - 2009-04-02 ###
+ ### jQuery Multiple File Upload Plugin v1.43 - 2009-04-02 ###
  * Home: http://www.fyneworks.com/jquery/multiple-file-upload/
  * Code: http://code.google.com/p/jquery-multifile-plugin/
  *
@@ -255,11 +255,10 @@
           };
           
           // Hide this element (NB: display:none is evil!)
-          $(this).css({ position:'absolute', top: '-3000px' });
+          //$(this).css({ position:'absolute', top: '-3000px' });
           
           // Add new element to the form
-          //MultiFile.list.before(newEle);//.append(newEle);
-          MultiFile.wrapper.prepend(newEle);//.append(newEle);
+          slave.after(newEle);
           
           // Update list
           MultiFile.addToList( this, slave_count );
