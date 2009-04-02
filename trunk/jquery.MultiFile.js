@@ -255,7 +255,7 @@
           };
           
           // Hide this element (NB: display:none is evil!)
-          //$(this).css({ position:'absolute', top: '-3000px' });
+          $(this).css({ position:'absolute', top: '-3000px' });
           
           // Add new element to the form
           slave.after(newEle);
