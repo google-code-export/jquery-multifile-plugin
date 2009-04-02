@@ -173,7 +173,9 @@
 								if(slave_count>0) slave.id = slave.name = '';
 								
         // Define element's ID and name (upload components need this!)
-        slave.id = slave.id || MultiFile.generateID(slave_count);
+        //slave.id = slave.id || MultiFile.generateID(slave_count);
+								if(slave_count>0) slave.id = MultiFile.generateID(slave_count);
+								//FIX for: http://code.google.com/p/jquery-multifile-plugin/issues/detail?id=23
         
         // 2008-Apr-29: New customizable naming convention (see url below)
         // http://groups.google.com/group/jquery-dev/browse_frm/thread/765c73e41b34f924#
@@ -310,14 +312,13 @@
           MultiFile.current.disabled = false;
           
           // Remove element, remove label, point to current
-										$(this).parent().remove();
-										$(MultiFile.current).remove();
-										MultiFile.current = slave;
 										MultiFile.slaves[slave_count] = null;
+										$(slave).remove();
+										$(this).parent().remove();
 										
           // Show most current element again (move into view) and clear selection
-          $(slave).css({ position:'', top: '' });
-										$(slave).reset().val('').attr('value', '')[0].value = '';
+          $(MultiFile.current).css({ position:'', top: '' });
+										//$(MultiFile.current).reset().val('').attr('value', '')[0].value = '';
           
           //# Trigger Event! afterFileRemove
           if(!MultiFile.trigger('afterFileRemove', slave, MultiFile)) return false;
@@ -481,6 +482,8 @@
 		
 		// error handling function
 		error: function(s){
+			/*
+			ERROR! blockUI is not currently working in IE
 			if($.blockUI){
 				$.blockUI({
 					message: s.replace(/\n/gi,'<br/>'),
@@ -493,7 +496,8 @@
 				window.setTimeout($.unblockUI, 2000);
 			}
 			else//{// save a byte!
-				alert(s);
+			*/
+			 alert(s);
 			//}// save a byte!
 		}
  }; //} });
