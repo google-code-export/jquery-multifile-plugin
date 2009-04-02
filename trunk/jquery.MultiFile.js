@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.40 - 2009-04-02 ###
+ ### jQuery Multiple File Upload Plugin v1.41 - 2009-04-02 ###
  * Home: http://www.fyneworks.com/jquery/multiple-file-upload/
  * Code: http://code.google.com/p/jquery-multifile-plugin/
  *
@@ -175,14 +175,13 @@
         // Define element's ID and name (upload components need this!)
         slave.id = slave.id || MultiFile.generateID(slave_count);
         
-        //slave.name = (slave.name || MultiFile.E.attr('name') || 'file');// + (slave_count>0?slave_count:''); // same name as master element
         // 2008-Apr-29: New customizable naming convention (see url below)
         // http://groups.google.com/group/jquery-dev/browse_frm/thread/765c73e41b34f924#
         slave.name = String(MultiFile.namePattern
-         /*master name*/.replace(/\$name/gi,MultiFile.E.attr('name'))
-         /*master id  */.replace(/\$id/gi,  MultiFile.E.attr('id'))
-         /*group count*/.replace(/\$g/gi,   (group_count>0?group_count:''))
-         /*slave count*/.replace(/\$i/gi,   (slave_count>0?slave_count:''))
+         /*master name*/.replace(/\$name/gi,$(MultiFile.clone).attr('name'))
+         /*master id  */.replace(/\$id/gi,  $(MultiFile.clone).attr('id'))
+         /*group count*/.replace(/\$g/gi,   group_count)//(group_count>0?group_count:''))
+         /*slave count*/.replace(/\$i/gi,   slave_count)//(slave_count>0?slave_count:''))
         );
         
         // If we've reached maximum number, disable input slave
@@ -233,7 +232,6 @@
           //};
           
           // Create a new file input element
-          //var newEle = $('<input name="'+(MultiFile.E.attr('name') || '')+'" type="file"/>');
           var newEle = $(MultiFile.clone).clone();// Copy parent attributes - Thanks to Jonas Wagner
           //# Let's remember which input we've generated so
           // we can disable the empty ones before submission
@@ -465,8 +463,8 @@
 		accept: '', // accepted file extensions
 		max: -1,    // maximum number of selectable files
 		
-		// namePattern: $name/$id (from master element), $i (slave count), $g (group count)
-		namePattern: '$name',
+		// name to use for newly created elements
+		namePattern: '$name', // same name by default (which creates an array)
 		
 		// STRING: collection lets you show messages in different languages
 		STRING: {
