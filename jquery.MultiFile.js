@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.41 - 2009-04-02 ###
+ ### jQuery Multiple File Upload Plugin v1.42 - 2009-04-02 ###
  * Home: http://www.fyneworks.com/jquery/multiple-file-upload/
  * Code: http://code.google.com/p/jquery-multifile-plugin/
  *
@@ -372,8 +372,8 @@
    * @example $.fn.MultiFile.reset();
    */
   reset: function(){
-			var MultiFile = $(this).data('MultiFile');
-			if(MultiFile) MultiFile.wrapper.find('a.MultiFile-remove').click()
+			var settings = $(this).data('MultiFile');
+			if(settings) settings.wrapper.find('a.MultiFile-remove').click();
    return $(this);
   },
   
