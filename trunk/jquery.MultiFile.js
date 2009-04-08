@@ -372,7 +372,8 @@
    */
   reset: function(){
 			var settings = $(this).data('MultiFile');
-			if(settings) settings.wrapper.find('a.MultiFile-remove').click();
+			//if(settings) settings.wrapper.find('a.MultiFile-remove').click();
+			if(settings) settings.list.find('a.MultiFile-remove').click();
    return $(this);
   },
   
