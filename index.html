@@ -626,11 +626,11 @@ $(function(){ // wait for document to load
     </p>
     <p>
      However, if you are submitting the form programmatically via javascript, you must call this <strong>before</strong> submitting the form....
-     <pre class="code"><code class="js">$.MultiFile.disableEmpty(); // before submiting the form</code></pre>
+     <pre class="code"><code class="js">$.fn.MultiFile.disableEmpty(); // before submiting the form</code></pre>
     </p>
     <p>
      And if you're doing things the ajax way, you should call this when you're done to re-enable the dummy element:
-     <pre class="code"><code class="js">$.MultiFile.reEnableEmpty(); // after submiting the form</code></pre>
+     <pre class="code"><code class="js">$.fn.MultiFile.reEnableEmpty(); // after submiting the form</code></pre>
     </p>
     
     <br/><br/>
