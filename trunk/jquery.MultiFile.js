@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.44 - 2009-04-08 ###
+ ### jQuery Multiple File Upload Plugin v1.45 - 2009-04-22 ###
  * Home: http://www.fyneworks.com/jquery/multiple-file-upload/
  * Code: http://code.google.com/p/jquery-multifile-plugin/
  *
@@ -104,7 +104,7 @@
        //===
        
        // APPLY CONFIGURATION
-       $.extend(MultiFile, o || {});
+							$.extend(MultiFile, o || {});
        MultiFile.STRING = $.extend({},$.fn.MultiFile.options.STRING,MultiFile.STRING);
        
        //===
@@ -421,6 +421,7 @@
  /**
   * This method will intercept other jQuery plugins and disable empty file input elements prior to form submission
   *
+
   * @name intercept
   * @cat Plugins/MultiFile
   * @author Diego A. (http://www.fyneworks.com/)
@@ -435,7 +436,8 @@
    if(typeof(methods)=='function'){
     $.fn.MultiFile.disableEmpty();
     value = methods.apply(context || window, args);
-    $.fn.MultiFile.reEnableEmpty();
+				//SEE-http://code.google.com/p/jquery-multifile-plugin/issues/detail?id=27
+				setTimeout(function(){ $.fn.MultiFile.reEnableEmpty() },1000);
     return value;
    };
    if(methods.constructor.toString().indexOf("Array")<0) methods = [methods];
@@ -446,7 +448,8 @@
      $.fn[method] = function(){
       $.fn.MultiFile.disableEmpty();
       value = $.fn.MultiFile.intercepted[method].apply(this, arguments);
-      $.fn.MultiFile.reEnableEmpty();
+						//SEE-http://code.google.com/p/jquery-multifile-plugin/issues/detail?id=27
+      setTimeout(function(){ $.fn.MultiFile.reEnableEmpty() },1000);
       return value;
      }; // interception
     })(method); // MAKE SURE THAT method IS ISOLATED for the interception
@@ -479,7 +482,7 @@
 		
 		// name of methods that should be automcatically intercepted so the plugin can disable
 		// extra file elements that are empty before execution and automatically re-enable them afterwards
-  autoIntercept: [ 'submit', 'ajaxSubmit', 'validate' /* array of methods to intercept */ ],
+  autoIntercept: [ 'submit', 'ajaxSubmit', 'ajaxForm', 'validate' /* array of methods to intercept */ ],
 		
 		// error handling function
 		error: function(s){
