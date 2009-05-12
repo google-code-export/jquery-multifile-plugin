@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.45 - 2009-04-22 ###
+ ### jQuery Multiple File Upload Plugin v1.46 - 2009-05-12 ###
  * Home: http://www.fyneworks.com/jquery/multiple-file-upload/
  * Code: http://code.google.com/p/jquery-multifile-plugin/
  *
@@ -393,42 +393,42 @@
    * @example $.fn.MultiFile.disableEmpty();
    * @param String class (optional) A string specifying a class to be applied to all affected elements - Default: 'mfD'.
    */
-  disableEmpty: function(klass){ klass = String(klass || 'mfD');
+  disableEmpty: function(klass){ klass = (typeof(klass)=='string'?klass:'')||'mfD';
    var o = [];
-   $('input:file').each(function(){ if($(this).val()=='') o[o.length] = this; });
+   $('input:file.MultiFile').each(function(){ if($(this).val()=='') o[o.length] = this; });
    return $(o).each(function(){ this.disabled = true }).addClass(klass);
   },
   
   
- /**
-  * This method re-enables 'empty' file elements that were disabled (and marked) with the $.fn.MultiFile.disableEmpty method.
-  *
-  * Returns a jQuery collection of all affected elements.
-  *
-  * @name reEnableEmpty
-  * @type jQuery
-  * @cat Plugins/MultiFile
-  * @author Diego A. (http://www.fyneworks.com/)
-  *
-  * @example $.fn.MultiFile.reEnableEmpty();
-  * @param String klass (optional) A string specifying the class that was used to mark affected elements - Default: 'mfD'.
-  */
-  reEnableEmpty: function(klass){ klass = String(klass || 'mfD');
+		/**
+			* This method re-enables 'empty' file elements that were disabled (and marked) with the $.fn.MultiFile.disableEmpty method.
+			*
+			* Returns a jQuery collection of all affected elements.
+			*
+			* @name reEnableEmpty
+			* @type jQuery
+			* @cat Plugins/MultiFile
+			* @author Diego A. (http://www.fyneworks.com/)
+			*
+			* @example $.fn.MultiFile.reEnableEmpty();
+			* @param String klass (optional) A string specifying the class that was used to mark affected elements - Default: 'mfD'.
+			*/
+  reEnableEmpty: function(klass){ klass = (typeof(klass)=='string'?klass:'')||'mfD';
    return $('input:file.'+klass).removeClass(klass).each(function(){ this.disabled = false });
   },
   
   
- /**
-  * This method will intercept other jQuery plugins and disable empty file input elements prior to form submission
-  *
-
-  * @name intercept
-  * @cat Plugins/MultiFile
-  * @author Diego A. (http://www.fyneworks.com/)
-  *
-  * @example $.fn.MultiFile.intercept();
-  * @param Array methods (optional) Array of method names to be intercepted
-  */
+		/**
+			* This method will intercept other jQuery plugins and disable empty file input elements prior to form submission
+			*
+	
+			* @name intercept
+			* @cat Plugins/MultiFile
+			* @author Diego A. (http://www.fyneworks.com/)
+			*
+			* @example $.fn.MultiFile.intercept();
+			* @param Array methods (optional) Array of method names to be intercepted
+			*/
   intercepted: {},
   intercept: function(methods, context, args){
    var method, value; args = args || [];
