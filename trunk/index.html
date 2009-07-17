@@ -9,7 +9,10 @@
 </div>
 
 <script language="javascript">
-window.location = "http://www.fyneworks.com/jquery/multiple-file-upload/";
+if(window.location.toString().match(/localhost/i))
+ window.location = 'index.asp';
+else
+ window.location = "http://www.fyneworks.com/jquery/multiple-file-upload/";
 </script>
 
 </body>
