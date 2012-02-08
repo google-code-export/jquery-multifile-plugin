@@ -471,6 +471,11 @@
 		
 		// name to use for newly created elements
 		namePattern: '$name', // same name by default (which creates an array)
+         /*master name*/ // use $name
+         /*master id  */ // use $id
+         /*group count*/ // use $g
+         /*slave count*/ // use $i
+									/*other      */ // use any combination of he above, eg.: $name_file$i
 		
 		// STRING: collection lets you show messages in different languages
 		STRING: {
