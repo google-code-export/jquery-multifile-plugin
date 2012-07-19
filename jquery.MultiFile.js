@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.47 - 2010-03-26 ###
+ ### jQuery Multiple File Upload Plugin v1.47 - 2012-07-19 ###
  * Home: http://www.fyneworks.com/jquery/multiple-file-upload/
  * Code: http://code.google.com/p/jquery-multifile-plugin/
  *
@@ -87,12 +87,12 @@
        // limit number of files that can be selected?
        if(!(o.max>0) /*IsNull(MultiFile.max)*/){
         o.max = MultiFile.E.attr('maxlength');
-        if(!(o.max>0) /*IsNull(MultiFile.max)*/){
-         o.max = (String(MultiFile.e.className.match(/\b(max|limit)\-([0-9]+)\b/gi) || ['']).match(/[0-9]+/gi) || [''])[0];
-         if(!(o.max>0)) o.max = -1;
-         else           o.max = String(o.max).match(/[0-9]+/gi)[0];
-        }
        };
+							if(!(o.max>0) /*IsNull(MultiFile.max)*/){
+								o.max = (String(MultiFile.e.className.match(/\b(max|limit)\-([0-9]+)\b/gi) || ['']).match(/[0-9]+/gi) || [''])[0];
+								if(!(o.max>0)) o.max = -1;
+								else           o.max = String(o.max).match(/[0-9]+/gi)[0];
+							}
        o.max = new Number(o.max);
        // limit extensions?
        o.accept = o.accept || MultiFile.E.attr('accept') || '';
@@ -448,7 +448,7 @@
      $.fn[method] = function(){
       $.fn.MultiFile.disableEmpty();
       value = $.fn.MultiFile.intercepted[method].apply(this, arguments);
-						//SEE-http://code.google.com/p/jquery-multifile-plugin/issues/detail?id=27
+						//SEE http://code.google.com/p/jquery-multifile-plugin/issues/detail?id=27
       setTimeout(function(){ $.fn.MultiFile.reEnableEmpty() },1000);
       return value;
      }; // interception
