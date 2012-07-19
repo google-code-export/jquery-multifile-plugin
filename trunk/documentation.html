@@ -44,9 +44,10 @@
     <td valign="middle" width="90" align="right">
      <strong style="color:#090;">Stay tuned</strong>:
     </td>
-    <td valign="middle" width="70" align="right">
-     <a href="http://www.facebook.com/fyneworks" target="_blank"><img src="documentation/facebook.png" width="32" height="32" alt="Like" /></a>
-     <a href="http://www.twitter.com/fyneworks" target="_blank"><img src="documentation/twitter.png" width="32" height="32" alt="Follow" /></a>
+    <td valign="middle" width="98" align="right">
+     <a href="http://plus.google.com/106186719756358832500" target="_blank"><img src="documentation/gplus.png" width="32" height="32" alt="+1"
+     /></a><a href="http://www.facebook.com/fyneworks" target="_blank"><img src="documentation/facebook.png" width="32" height="32" alt="Like"
+     /></a><a href="http://www.twitter.com/fyneworks" target="_blank"><img src="documentation/twitter.png" width="32" height="32" alt="Follow" /></a>
     </td>
     <td valign="middle" width="5">&nbsp;</td>
    </tr>
@@ -98,64 +99,67 @@
     
     
     <div id="tab-Overview">
-    <h2>What is this?</h2>
+    <h2>What <span style="color:green;">this is</span></h2>
     <p>
-     The <strong>Multiple File Upload Plugin</strong> (<em>jQuery.MultiFile</em>)
-     is a non-obstrusive plugin for the jQuery Javascript library
+     This <strong>jQuery Multiple File Upload Plugin</strong> (<code>$.MultiFile</code>)
+     is a non-obstrusive plugin for <a href="http://www.jquery.com/">jQuery</a>
      that helps users easily select multiple files for upload quickly and easily
+     on your <a href="http://www.webhostingsearch.com/">hosting server</a>
      whilst also providing some basic validation functionality to help developers
      idenfity simple errors, without having to submit the form (ie.: upload files).
     </p>
     
-    <h2>How do I use it?</h2>
+    <h2>What <span style="color:red;">this isn't</span></h2>
     <p>
-     Just add the <code><strong>multi</strong></code> class to your file input element.
+     This plugin will not create a dialog that allows the user to select multiple files at once.
+     That simply cannot be done via javascript. If that's what you need, you should consider using
+     <a href="http://www.w3schools.com/html5/att_input_multiple.asp">HTML5's <code>multiple="multiple"</code> attribute</a>
+      or one of the many other
+     <a href="https://www.google.co.uk/search?q=flash+upload">flash based file upload solutions</a>
+     (eg.: <a href="http://swfupload.org">SWFupload</a>, <a href="http://www.uploadify.com/">uploadify</a> and others)
     </p>
-    <table cellspacing="5" width="100%">
+    
+    <h2>How it works</h2>
+    <p>
+     The plugin creates a new file input element every time the user select a file,
+     which allows the user to select a file, then another, then another, then another and so on...
+     selecting as many files is required, <strong>one at a time</strong>.
+    </p>
+    
+    <h2>How do I use it?</h2>
+    <table cellspacing="0" width="100%">
      <tr>
-      <td valign="top">
+      <td valign="top" width="30%">
+       <p>
+        Just add the <code><strong>multi</strong></code> class to your file input element.
+       </p>
        <pre class="code"><code class="html">&lt;input type="file" class="multi"/&gt;</code></pre>
-      </td>
-      <td valign="top" width="10">&raquo;</td>
-      <td valign="top" width="300">
+       <br/><br/>
        <input type="file" class="multi"/>
       </td>
-     </tr>
-    </table>
-    
-    <p>
-     Use the <code><strong>maxlength</strong></code> property if you want to limit the number of files selected
-    </p>
-    <table cellspacing="5" width="100%">
-     <tr>
-      <td valign="top">
+      <td valign="top" width="20">&nbsp;</td>
+      <td valign="top" width="30%">
+       <p>
+        Use the <code><strong>maxlength</strong></code> property if you want to limit the number of files selected.
+        (<span style="font-weight:bold; color:red;">server-side validation is always required</span>)
+       </p>
        <pre class="code"><code class="html">&lt;input type="file" class="multi" maxlength="2"/&gt;</code></pre>
-      </td>
-      <td valign="top" width="10">&raquo;</td>
-      <td valign="top" width="300">
+       <br/><br/>
        <input type="file" class="multi" maxlength="2"/>
       </td>
-     </tr>
-    </table>
-    
-    <p>
-     Use the <code><strong>accept</strong></code> property if you only want files of a certain extension to be selected
-     (separate valid extensions with a "|").
-    </p>
-    <table cellspacing="5" width="100%">
-     <tr>
-      <td valign="top">
+      <td valign="top" width="20">&nbsp;</td>
+      <td valign="top" width="30%">
+       <p>
+        Use the <code><strong>accept</strong></code> property if you only want files of a certain extension to be selected
+        Separate valid extensions with a "|", like this: "jpg|gif|png".
+        (<span style="font-weight:bold; color:red;">server-side validation is always required</span>)
+       </p>
        <pre class="code"><code class="html">&lt;input type="file" class="multi" accept="gif|jpg"/&gt;</code></pre>
-      </td>
-      <td valign="top" width="10">&raquo;</td>
-      <td valign="top" width="300">
+       <br/><br/>
        <input type="file" class="multi" accept="gif|jpg"/>
       </td>
      </tr>
     </table>
-    <p style="font-weight:bold; color:red;">
-     PS.: Server-side validation is always required.
-    </p>
    </div><!--// tab-Overview //-->
    
    <div id="tab-Examples">
@@ -693,6 +697,9 @@ $(function(){ // wait for document to load
       </td>
      </tr>
     </table>
+    <p>
+     Download <a href="http://www.activextest.com/">www.activextest.com</a> program for free and keep your computer protected for improved speed, performance and operation!
+    </p>
     
     <h2>Related Downloads</h2>
     <table cellspacing="5">
@@ -760,7 +767,7 @@ $(function(){ // wait for document to load
     <h2>Alternative Download - From this website</h2>
     <p>
      Just in case it's the end of the world and the Google Code site becomes unavailable,
-     the project files can also be downloaded form this site.
+     the project files can also be downloaded from this site.
      <br/>
      However, please note that this site is updated periodically whereas the Google Code
      project is kept up-to-date almost instantaneously. If you'd like the very latest
@@ -774,7 +781,7 @@ $(function(){ // wait for document to load
       <td valign="top">
        <img src="documentation/download.gif" style="margin:0 5px 5px 0; float:left;">
        v<strong>1.47</strong>
-       <a href="http://jquery-multifile-plugin.googlecode.com/svn/trunk/multiple-file-upload.zip"><strong>multiple-file-upload.zip</strong></a>
+       <a href="./multiple-file-upload.zip"><strong>multiple-file-upload.zip</strong></a>
       </td>
      </tr>
      <tr>
@@ -795,7 +802,7 @@ $(function(){ // wait for document to load
       <td valign="top">
        These are the individual required files (<span class="Warning">already included in the zip package above</span>)
        <ul>
-        <li><a href='jquery.MultiFile.js'><strong>jQuery.MultiFile.js</strong></a> (packed version: <a href="jquery.MultiFile.pack.js">jQuery.MultiFile.pack.js</a>)</li>
+        <li><a href='./jquery.MultiFile.js'><strong>jQuery.MultiFile.js</strong></a> (packed version: <a href="./jquery.MultiFile.pack.js">jQuery.MultiFile.pack.js</a>)</li>
        </ul>
       </td>
      </tr>
