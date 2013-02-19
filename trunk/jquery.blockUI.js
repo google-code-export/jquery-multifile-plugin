@@ -43,7 +43,7 @@ $.fn.block = function(opts) {
     return this.each(function() {
         if ($.css(this,'position') == 'static')
             this.style.position = 'relative';
-        if ($.browser.msie)
+        if ((!$.support.opacity && !$.support.style))
             this.style.zoom = 1; // force 'hasLayout'
         install(this, opts);
     });
@@ -146,7 +146,7 @@ $.blockUI.defaults = {
 
 // private data and functions follow...
 
-var ie6 = $.browser.msie && /MSIE 6.0/.test(navigator.userAgent);
+var ie6 = (!$.support.opacity && !$.support.style) && /MSIE 6.0/.test(navigator.userAgent);
 var pageBlock = null;
 var pageBlockEls = [];
 
@@ -184,7 +184,7 @@ function install(el, opts) {
     // layer2 is the overlay layer which has opacity and a wait cursor
     // layer3 is the message content that is displayed while blocking
 
-    var lyr1 = ($.browser.msie) ? $('<iframe class="blockUI" style="z-index:'+ (z++) +';display:none;border:none;margin:0;padding:0;position:absolute;width:100%;height:100%;top:0;left:0" src="about:blank"></iframe>')
+    var lyr1 = ((!$.support.opacity && !$.support.style)) ? $('<iframe class="blockUI" style="z-index:'+ (z++) +';display:none;border:none;margin:0;padding:0;position:absolute;width:100%;height:100%;top:0;left:0" src="about:blank"></iframe>')
                                 : $('<div class="blockUI" style="display:none"></div>');
     var lyr2 = $('<div class="blockUI blockOverlay" style="z-index:'+ (z++) +';display:none;cursor:wait;border:none;margin:0;padding:0;width:100%;height:100%;top:0;left:0"></div>');
     var lyr3 = full ? $('<div class="blockUI blockMsg blockPage" style="z-index:'+z+';display:none;position:fixed"></div>')
@@ -200,13 +200,13 @@ function install(el, opts) {
     lyr2.css('position', full ? 'fixed' : 'absolute');
 
     // make iframe layer transparent in IE
-    if ($.browser.msie)
+    if ((!$.support.opacity && !$.support.style))
         lyr1.css('opacity','0.0');
 
     $([lyr1[0],lyr2[0],lyr3[0]]).appendTo(full ? 'body' : el);
 
     // ie7 must use absolute positioning in quirks mode and to account for activex issues (when scrolling)
-    var expr = $.browser.msie && ($.browser.version < 8 || !$.boxModel) && (!$.boxModel || $('object,embed', full ? null : el).length > 0);
+    var expr = (!$.support.opacity && !$.support.style) && ($.browser.version < 8 || !$.boxModel) && (!$.boxModel || $('object,embed', full ? null : el).length > 0);
     if (ie6 || (expr && lyr3[0].style.setExpression)) {
         // give body 100% height
         if (full && opts.allowBodyStretch && $.boxModel)
@@ -250,7 +250,7 @@ function install(el, opts) {
 			$(msg).show();
 	}
 
-	if ($.browser.msie && opts.showOverlay)
+	if ((!$.support.opacity && !$.support.style) && opts.showOverlay)
 		lyr1.show(); // opacity is zero
 	if (opts.fadeIn) {
 		if (opts.showOverlay)
