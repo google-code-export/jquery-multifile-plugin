@@ -1,5 +1,5 @@
 /*
- ### jQuery Multiple File Upload Plugin v1.48 - 2012-07-19 ###
+ ### jQuery Multiple File Upload Plugin v1.48 - 2013-02-19 ###
  * Home: http://www.fyneworks.com/jquery/multiple-file-upload/
  * Code: http://code.google.com/p/jquery-multifile-plugin/
  *
