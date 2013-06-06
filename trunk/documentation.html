@@ -83,7 +83,7 @@
     <li><a href="#tab-Support" id="btn-Support">Support</a></li>
 
      <li><a href="#tab-License" id="btn-License">License</a></li>
-     <li><a href="#tab-More" id="btn-More">More</a></li>
+     <li><a href="#tab-More" id="btn-More">More</a></li><li><a href="#tab-Break" id="btn-Break" style="font-weight:bold; color:red;">Have a break</a></li>
     </ul><!--// tabs //-->
     <!--//
     ####################################
@@ -166,342 +166,369 @@
    </div><!--// tab-Overview //-->
    
    <div id="tab-Examples">
-    
-    <h2>Using HTML</h2>
-    <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
-     <tr>
-      <td valign="top" width="33%">
-       <fieldset style="border:0">
-        <legend><strong>Example 1</strong></legend>
-        <code class="">
-         class="multi" maxlength="2"
-        </code>
-        <div class="P5 B">
-         Limit: 2 files.
-         <br/>
-         Allowed extensions: any.
-        </div>
-        <form action="" class="P10">
-         <input type="file" class="multi" maxlength="2"/>
-        </form>
-       </fieldset>
-      </td>
-      <td valign="top" width="33%">
-       <fieldset style="border:0">
-        <legend><strong>Example 2</strong></legend>
-        <code class="">
-         class="multi" accept="gif|jpg"
-        </code>
-        <div class="P5 B">
-         Limit: no limit.
-         <br/>
-         Allowed extensions: gif and jpg.
-        </div>
-        <form action="" class="P10">
-         <input type="file" class="multi" accept="gif|jpg"/>
-        </form>
-       </fieldset>
-      </td>
-      <td valign="top" width="33%">
-       <fieldset style="border:0">
-        <legend><strong>Example 3</strong></legend>
-        <code class="">
-         class="multi" accept="gif|jpg" maxlength="3"
-        </code>
-        <div class="P5 B">
-         Limit: 3 files
-         <br/>
-         Allowed extensions: gif, jpg.
-        </div>
-        <form action="" class="P10">
-         <input type="file" class="multi" accept="gif|jpg" maxlength="3"/>
-        </form>
-        <div class="P5 Warning Bold">
-         Note that server-side validation is always required
-        </div>
-       </fieldset>
-      </td>
-     </tr>
-    </table>
-    
-    <hr/>
-    
-    <h2>Using class property</h2>
-    <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
-     <tr>
-      <td valign="top" width="33%">
-       <fieldset style="border:0">
-        <legend><strong>Example 4</strong></legend>
-        <code class="">
-         class="multi max-2"
-        </code>
-        <div class="P5 B">
-         Limit: 2 files.
-         <br/>
-         Allowed extensions: any.
-        </div>
-        <form action="" class="P10">
-         <input type="file" class="multi max-2"/>
-        </form>
-       </fieldset>
-      </td>
-      <td valign="top" width="33%">
-       <fieldset style="border:0">
-        <legend><strong>Example 5</strong></legend>
-        <code class="">
-         class="multi accept-gif|jpg"
-        </code>
-        <div class="P5 B">
-         Limit: no limit.
-         <br/>
-         Allowed extensions: gif, jpg.
-        </div>
-        <form action="" class="P10">
-         <input type="file" class="multi accept-gif|jpg"/>
-        </form>
-       </fieldset>
-      </td>
-      <td valign="top" width="33%">
-       <fieldset style="border:0">
-        <legend><strong>Example 6</strong></legend>
-        <code class="">
-         class="multi max-3 accept-gif|jpg"
-        </code>
-        <div class="P5 B">
-         Limit: 3 files
-         <br/>
-         Allowed extensions: gif, jpg.
-        </div>
-        <form action="" class="P10">
-         <input type="file" class="multi max-3 accept-gif|jpg"/>
-        </form>
-        <div class="P5 Warning Bold">
-         Note that server-side validation is always required
-        </div>
-       </fieldset>
-      </td>
-     </tr>
-    </table>
-    
-    <hr/>
-    
-    <h2>Moving the file list</h2>
-    <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
-     <tr>
-      <td valign="top" width="50%">
-       <fieldset style="border:0">
-        <legend><strong>Example 7</strong></legend>
-        <p>This example populates the file list in a custom element</p>
-        <pre class="code"><code class="js">$(function(){ // wait for document to load 
- $('#T7').MultiFile({ 
-  list: '#T7-list'
- }); 
-});</code></pre>
-<script type="text/javascript" language="javascript">
-$(function(){ // wait for document to load 
- $('#T7').MultiFile({ 
-  list: '#T7-list'
- }); 
-});
-</script>
-       </fieldset>
-      </td>
-      <td valign="top" width="50%">
-        <form action="" class="P10">
-         <input type="file" id="T7"/>
-        </form>
-       <div id="T7-list" style="border:#999 solid 3px; padding:10px;">
-        This is div#T7-list - selected files will be populated here...
-        <br/><br/>
-       </div>
-      </td>
-     </tr>
-    </table>
-    
-    
-    <hr/>
-    
-    <h2>Customising the file list</h2>
-    <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
-     <tr>
-      <td valign="top" width="50%">
-       <fieldset style="border:0">
-        <legend><strong>Example 8 A</strong></legend>
-        <p>Use a custom 'remove' image in the file list</p>
-        <pre class="code"><code class="js">$(function(){ // wait for document to load 
- $('#T8A').MultiFile({ 
-  STRING: {
-   remove: '&lt;img src="/i/bin.gif" height="16" width="16" alt="x"/&gt;'
-  }
- }); 
-});</code></pre>
-<script type="text/javascript" language="javascript">
-$(function(){ // wait for document to load 
- $('#T8A').MultiFile({ 
-  STRING: {
-   remove: '<img src="/i/bin.gif" height="16" width="16" alt="x"/>'
-  }
- }); 
-});
-</script>
-       </fieldset>
-      </td>
-      <td valign="top" width="50%">
-        <form action="" class="P10">
-         <input type="file" id="T8A"/>
-        </form>
-      </td>
-     </tr>
-    </table>
 
-    <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
-     <tr>
-      <td valign="top" width="50%">
-       <fieldset style="border:0">
-        <legend><strong>Example 8 B</strong></legend>
-        <p>Customising all list content</p>
-        <pre class="code"><code class="js">$(function(){ // wait for document to load 
- $('#T8B').MultiFile({ 
-  STRING: {
-   file: '&lt;em title="Click to remove" onclick="$(this).parent().prev().click()"&gt;$file&lt;/em&gt;',
-   remove: '&lt;img src="/i/bin.gif" height="16" width="16" alt="x"/&gt;'
-  }
- }); 
-});</code></pre>
-<script type="text/javascript" language="javascript">
-$(function(){ // wait for document to load 
- $('#T8B').MultiFile({ 
-  STRING: {
-   file: '<em title="Click to remove" onclick="$(this).parent().prev().click()">$file</em>',
-   remove: '<img src="/i/bin.gif" height="16" width="16" alt="x"/>'
-  }
- }); 
-});
-</script>
-       </fieldset>
-      </td>
-      <td valign="top" width="50%">
-        <form action="" class="P10">
-         <input type="file" id="T8B"/>
-        </form>
-      </td>
-     </tr>
-    </table>
-    
-    <hr/>
-     
-    <h2>Using events</h2>
-    <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
-     <tr>
-      <td valign="top" width="50%">
-       <fieldset style="border:0">
-        <legend><strong>Example 9</strong></legend>
-        <p>
-         The events available are:<br/>
-         onFileAppend, afterFileAppend,
-         onFileSelect, afterFileSelect,
-         onFileRemove, afterFileRemove
-        </p>
-        <p>
-         The arguments passed on to each event handler are:<br/>
-         element: file element which triggered the event<br/>
-         value: the value of the element in question<br/>
-         master_element: the original element containing all relevant settings
-        </p>
-        <pre class="code"><code class="js">$(function(){ // wait for document to load 
- $('#T9').MultiFile({
-  onFileRemove: function(element, value, master_element){
-   $('#F9-Log').append('&lt;li&gt;onFileRemove - '+value+'&lt;/li&gt;')
-  },
-  afterFileRemove: function(element, value, master_element){
-   $('#F9-Log').append('&lt;li&gt;afterFileRemove - '+value+'&lt;/li&gt;')
-  },
-  onFileAppend: function(element, value, master_element){
-   $('#F9-Log').append('&lt;li&gt;onFileAppend - '+value+'&lt;/li&gt;')
-  },
-  afterFileAppend: function(element, value, master_element){
-   $('#F9-Log').append('&lt;li&gt;afterFileAppend - '+value+'&lt;/li&gt;')
-  },
-  onFileSelect: function(element, value, master_element){
-   $('#F9-Log').append('&lt;li&gt;onFileSelect - '+value+'&lt;/li&gt;')
-  },
-  afterFileSelect: function(element, value, master_element){
-   $('#F9-Log').append('&lt;li&gt;afterFileSelect - '+value+'&lt;/li&gt;')
-  }
- }); 
-});</code></pre>
-<script type="text/javascript" language="javascript">
-$(function(){ // wait for document to load 
- $('#T9').MultiFile({
-  onFileRemove: function(element, value, master_element){
-   $('#F9-Log').append('<li>onFileRemove - '+value+'</li>')
-  },
-  afterFileRemove: function(element, value, master_element){
-   $('#F9-Log').append('<li>afterFileRemove - '+value+'</li>')
-  },
-  onFileAppend: function(element, value, master_element){
-   $('#F9-Log').append('<li>onFileAppend - '+value+'</li>')
-  },
-  afterFileAppend: function(element, value, master_element){
-   $('#F9-Log').append('<li>afterFileAppend - '+value+'</li>')
-  },
-  onFileSelect: function(element, value, master_element){
-   $('#F9-Log').append('<li>onFileSelect - '+value+'</li>')
-  },
-  afterFileSelect: function(element, value, master_element){
-   $('#F9-Log').append('<li>afterFileSelect - '+value+'</li>')
-  }
- }); 
-});
-</script>
-       </fieldset>
-      </td>
-      <td valign="top" width="50%">
-        <form action="" class="P10">
-         <input type="file" id="T9"/>
-        </form>
-       <div style="border:#999 solid 3px; padding:10px;">
-        This is div#F9-Log - selected files will be populated here...
-        <br/>
-        <ul id="F9-Log">
-        
-        </ul>
-       </div>
-      </td>
-     </tr>
-    </table>
-    
-    <hr/>
-     
-    <h2>Advanced Usage</h2>
-    <h3>Using your own selectors</h3>
-    <pre class="code"><code class="js">$(function(){ // wait for document to load
-  $('#MyFileUpload').MultiFile();
- });</code></pre>
-    
-    <h3>Setting limit via script</h3>
-    <pre class="code"><code class="js">$(function(){ // wait for document to load
-  $('#MyFileUpload').MultiFile(5 /*limit will be set to 5*/);
- });</code></pre>
-    
-    <h3>Advanced configuration</h3>
-    <pre class="code"><code class="js">$(function(){ // wait for document to load
-  $('#MyCoolFileUpload').MultiFile({
-   max: 5,
-   accept: 'gif|jpg|png|bmp|swf'
-  });
- });</code></pre>
-    
-    <h3>Customising visible strings for multi-lingual support</h3>
-    <pre class="code"><code class="js">$(function(){ // wait for document to load
-  $('#PortugueseFileUpload').MultiFile({
-   STRING: {
-    remove:'Remover',
-    selected:'Selecionado: $file',
-    denied:'Invalido arquivo de tipo $ext!'
-   }
-  });
- });</code></pre>
+          <div class="tabs">
+            <ul>
+              <li>
+                <a href="#tab-Examples-Simple">Simple Examples</a>
+              </li>
+              <li>
+                <a href="#tab-Examples-Expert">Expert Examples</a>
+              </li>
+            </ul>
+            <div id="tab-Examples-Simple">
+
+                                  <div style="margin:20px 0; background-color:#ececec color:#f00; padding:10px; border:#ccc dotted 1px; color:#f00; font-weight:bold;">
+                                    This implementation does not require any jQuery experience.
+                                    Just add <code>class="multi"</code> and the plugin will do the rest.
+                                  </div>
+
+                                  <h2>Using Attributes</h2>
+                                  <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
+                                   <tr>
+                                    <td valign="top" width="33%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 1</strong></legend>
+                                      <code class="">
+                                       &lt;input class="multi" maxlength="2"/&gt;
+                                      </code>
+                                      <div class="P5 B">
+                                       Limit: 2 files.
+                                       <br/>
+                                       Allowed extensions: any.
+                                      </div>
+                                      <form action="" class="P10">
+                                       <input type="file" class="multi" maxlength="2"/>
+                                      </form>
+                                     </fieldset>
+                                    </td>
+                                    <td valign="top" width="33%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 2</strong></legend>
+                                      <code class="">
+                                       &lt;input class="multi" accept="gif|jpg"/&gt;
+                                      </code>
+                                      <div class="P5 B">
+                                       Limit: no limit.
+                                       <br/>
+                                       Allowed extensions: gif and jpg.
+                                      </div>
+                                      <form action="" class="P10">
+                                       <input type="file" class="multi" accept="gif|jpg"/>
+                                      </form>
+                                     </fieldset>
+                                    </td>
+                                    <td valign="top" width="33%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 3</strong></legend>
+                                      <code class="">
+                                       &lt;input class="multi" accept="gif|jpg" maxlength="3"/&gt;
+                                      </code>
+                                      <div class="P5 B">
+                                       Limit: 3 files
+                                       <br/>
+                                       Allowed extensions: gif, jpg.
+                                      </div>
+                                      <form action="" class="P10">
+                                       <input type="file" class="multi" accept="gif|jpg" maxlength="3"/>
+                                      </form>
+                                      <div class="P5 Warning Bold">
+                                       Note that server-side validation is always required
+                                      </div>
+                                     </fieldset>
+                                    </td>
+                                   </tr>
+                                  </table>
+                                  
+                                  <hr/>
+                                  
+                                  <h2>Using the <code>class</code> property</h2>
+                                  <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
+                                   <tr>
+                                    <td valign="top" width="33%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 4</strong></legend>
+                                      <code class="">
+                                       &lt;input class="multi max-2"/&gt;
+                                      </code>
+                                      <div class="P5 B">
+                                       Limit: 2 files.
+                                       <br/>
+                                       Allowed extensions: any.
+                                      </div>
+                                      <form action="" class="P10">
+                                       <input type="file" class="multi max-2"/>
+                                      </form>
+                                     </fieldset>
+                                    </td>
+                                    <td valign="top" width="33%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 5</strong></legend>
+                                      <code class="">
+                                       &lt;input class="multi accept-gif|jpg"/&gt;
+                                      </code>
+                                      <div class="P5 B">
+                                       Limit: no limit.
+                                       <br/>
+                                       Allowed extensions: gif, jpg.
+                                      </div>
+                                      <form action="" class="P10">
+                                       <input type="file" class="multi accept-gif|jpg"/>
+                                      </form>
+                                     </fieldset>
+                                    </td>
+                                    <td valign="top" width="33%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 6</strong></legend>
+                                      <code class="">
+                                       &lt;input class="multi max-3 accept-gif|jpg"/&gt;
+                                      </code>
+                                      <div class="P5 B">
+                                       Limit: 3 files
+                                       <br/>
+                                       Allowed extensions: gif, jpg.
+                                      </div>
+                                      <form action="" class="P10">
+                                       <input type="file" class="multi max-3 accept-gif|jpg"/>
+                                      </form>
+                                      <div class="P5 Warning Bold">
+                                       Note that server-side validation is always required
+                                      </div>
+                                     </fieldset>
+                                    </td>
+                                   </tr>
+                                  </table>
+                                  
+
+            </div>
+            <div id="tab-Examples-Expert">
+
+
+                                  <div style="margin:20px 0; background-color:#ececec color:#f00; padding:10px; border:#ccc dotted 1px; color:#f00; font-weight:bold;">
+                                    You must NOT use <code>class="multi"</code> if you use any of the examples on this page.
+                                  </div>
+
+                                  
+                                  <h2>Moving the file list</h2>
+                                  <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
+                                   <tr>
+                                    <td valign="top" width="50%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 7</strong></legend>
+                                      <p>This example populates the file list in a custom element</p>
+                                      <pre class="code"><code class="js">$(function(){ // wait for document to load 
+                               $('#T7').MultiFile({ 
+                                list: '#T7-list'
+                               }); 
+                              });</code></pre>
+                              <script type="text/javascript" language="javascript">
+                              $(function(){ // wait for document to load 
+                               $('#T7').MultiFile({ 
+                                list: '#T7-list'
+                               }); 
+                              });
+                              </script>
+                                     </fieldset>
+                                    </td>
+                                    <td valign="top" width="50%">
+                                      <form action="" class="P10">
+                                       <input type="file" id="T7"/>
+                                      </form>
+                                     <div id="T7-list" style="border:#999 solid 3px; padding:10px;">
+                                      This is div#T7-list - selected files will be populated here...
+                                      <br/><br/>
+                                     </div>
+                                    </td>
+                                   </tr>
+                                  </table>
+                                  
+                                  
+                                  <hr/>
+                                  
+                                  <h2>Customising the file list</h2>
+                                  <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
+                                   <tr>
+                                    <td valign="top" width="50%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 8 A</strong></legend>
+                                      <p>Use a custom 'remove' image in the file list</p>
+                                      <pre class="code"><code class="js">$(function(){ // wait for document to load 
+                               $('#T8A').MultiFile({ 
+                                STRING: {
+                                 remove: '&lt;img src="/i/bin.gif" height="16" width="16" alt="x"/&gt;'
+                                }
+                               }); 
+                              });</code></pre>
+                              <script type="text/javascript" language="javascript">
+                              $(function(){ // wait for document to load 
+                               $('#T8A').MultiFile({ 
+                                STRING: {
+                                 remove: '<img src="/i/bin.gif" height="16" width="16" alt="x"/>'
+                                }
+                               }); 
+                              });
+                              </script>
+                                     </fieldset>
+                                    </td>
+                                    <td valign="top" width="50%">
+                                      <form action="" class="P10">
+                                       <input type="file" id="T8A"/>
+                                      </form>
+                                    </td>
+                                   </tr>
+                                  </table>
+
+                                  <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
+                                   <tr>
+                                    <td valign="top" width="50%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 8 B</strong></legend>
+                                      <p>Customising all list content</p>
+                                      <pre class="code"><code class="js">$(function(){ // wait for document to load 
+                               $('#T8B').MultiFile({ 
+                                STRING: {
+                                 file: '&lt;em title="Click to remove" onclick="$(this).parent().prev().click()"&gt;$file&lt;/em&gt;',
+                                 remove: '&lt;img src="/i/bin.gif" height="16" width="16" alt="x"/&gt;'
+                                }
+                               }); 
+                              });</code></pre>
+                              <script type="text/javascript" language="javascript">
+                              $(function(){ // wait for document to load 
+                               $('#T8B').MultiFile({ 
+                                STRING: {
+                                 file: '<em title="Click to remove" onclick="$(this).parent().prev().click()">$file</em>',
+                                 remove: '<img src="/i/bin.gif" height="16" width="16" alt="x"/>'
+                                }
+                               }); 
+                              });
+                              </script>
+                                     </fieldset>
+                                    </td>
+                                    <td valign="top" width="50%">
+                                      <form action="" class="P10">
+                                       <input type="file" id="T8B"/>
+                                      </form>
+                                    </td>
+                                   </tr>
+                                  </table>
+                                  
+                                  <hr/>
+                                   
+                                  <h2>Using events</h2>
+                                  <table summary="MultiFile Upload Demos" width="100%" cellspacing="10">
+                                   <tr>
+                                    <td valign="top" width="50%">
+                                     <fieldset style="border:0">
+                                      <legend><strong>Example 9</strong></legend>
+                                      <p>
+                                       The events available are:<br/>
+                                       onFileAppend, afterFileAppend,
+                                       onFileSelect, afterFileSelect,
+                                       onFileRemove, afterFileRemove
+                                      </p>
+                                      <p>
+                                       The arguments passed on to each event handler are:<br/>
+                                       element: file element which triggered the event<br/>
+                                       value: the value of the element in question<br/>
+                                       master_element: the original element containing all relevant settings
+                                      </p>
+                                      <pre class="code"><code class="js">$(function(){ // wait for document to load 
+                               $('#T9').MultiFile({
+                                onFileRemove: function(element, value, master_element){
+                                 $('#F9-Log').append('&lt;li&gt;onFileRemove - '+value+'&lt;/li&gt;')
+                                },
+                                afterFileRemove: function(element, value, master_element){
+                                 $('#F9-Log').append('&lt;li&gt;afterFileRemove - '+value+'&lt;/li&gt;')
+                                },
+                                onFileAppend: function(element, value, master_element){
+                                 $('#F9-Log').append('&lt;li&gt;onFileAppend - '+value+'&lt;/li&gt;')
+                                },
+                                afterFileAppend: function(element, value, master_element){
+                                 $('#F9-Log').append('&lt;li&gt;afterFileAppend - '+value+'&lt;/li&gt;')
+                                },
+                                onFileSelect: function(element, value, master_element){
+                                 $('#F9-Log').append('&lt;li&gt;onFileSelect - '+value+'&lt;/li&gt;')
+                                },
+                                afterFileSelect: function(element, value, master_element){
+                                 $('#F9-Log').append('&lt;li&gt;afterFileSelect - '+value+'&lt;/li&gt;')
+                                }
+                               }); 
+                              });</code></pre>
+                              <script type="text/javascript" language="javascript">
+                              $(function(){ // wait for document to load 
+                               $('#T9').MultiFile({
+                                onFileRemove: function(element, value, master_element){
+                                 $('#F9-Log').append('<li>onFileRemove - '+value+'</li>')
+                                },
+                                afterFileRemove: function(element, value, master_element){
+                                 $('#F9-Log').append('<li>afterFileRemove - '+value+'</li>')
+                                },
+                                onFileAppend: function(element, value, master_element){
+                                 $('#F9-Log').append('<li>onFileAppend - '+value+'</li>')
+                                },
+                                afterFileAppend: function(element, value, master_element){
+                                 $('#F9-Log').append('<li>afterFileAppend - '+value+'</li>')
+                                },
+                                onFileSelect: function(element, value, master_element){
+                                 $('#F9-Log').append('<li>onFileSelect - '+value+'</li>')
+                                },
+                                afterFileSelect: function(element, value, master_element){
+                                 $('#F9-Log').append('<li>afterFileSelect - '+value+'</li>')
+                                }
+                               }); 
+                              });
+                              </script>
+                                     </fieldset>
+                                    </td>
+                                    <td valign="top" width="50%">
+                                      <form action="" class="P10">
+                                       <input type="file" id="T9"/>
+                                      </form>
+                                     <div style="border:#999 solid 3px; padding:10px;">
+                                      This is div#F9-Log - selected files will be populated here...
+                                      <br/>
+                                      <ul id="F9-Log">
+                                      
+                                      </ul>
+                                     </div>
+                                    </td>
+                                   </tr>
+                                  </table>
+                                  
+                                  <hr/>
+                                   
+                                  <h2>Advanced Usage</h2>
+                                  <h3>Using your own selectors</h3>
+                                  <pre class="code"><code class="js">$(function(){ // wait for document to load
+                                $('#MyFileUpload').MultiFile();
+                               });</code></pre>
+                                  
+                                  <h3>Setting limit via script</h3>
+                                  <pre class="code"><code class="js">$(function(){ // wait for document to load
+                                $('#MyFileUpload').MultiFile(5 /*limit will be set to 5*/);
+                               });</code></pre>
+                                  
+                                  <h3>Advanced configuration</h3>
+                                  <pre class="code"><code class="js">$(function(){ // wait for document to load
+                                $('#MyCoolFileUpload').MultiFile({
+                                 max: 5,
+                                 accept: 'gif|jpg|png|bmp|swf'
+                                });
+                               });</code></pre>
+                                  
+                                  <h3>Customising visible strings for multi-lingual support</h3>
+                                  <pre class="code"><code class="js">$(function(){ // wait for document to load
+                                $('#PortugueseFileUpload').MultiFile({
+                                 STRING: {
+                                  remove:'Remover',
+                                  selected:'Selecionado: $file',
+                                  denied:'Invalido arquivo de tipo $ext!'
+                                 }
+                                });
+                               });</code></pre>
+
+            </div>
+          </div>
     
    </div><!--// tab-Examples //-->
    
@@ -1004,6 +1031,20 @@ $(function(){ // wait for document to load
       </tr>
      </table>
     </div><!--// tab-More//-->
+          
+          <div id="tab-Break">
+           <div style="margin:30px;">
+            <p>
+               Having a break? Check out this awesome
+               <a href="http://www.youtube.com/watch?v=wqXUWK5gD8E">sexy video</a>
+               from <a href="http://www.facebook.com/Nympherno">Nympherno</a>
+            </p>
+            <div style="margin:50px 0 0 0; text-align:center;">
+             <iframe width="640" height="360" src="http://www.youtube.com/embed/wqXUWK5gD8E" frameborder="0" allowfullscreen></iframe>
+            </div>
+           </div>
+          </div><!--// tab-Break//-->
+          
    </div><!--// tabs //-->   
   </div>
  </div>
